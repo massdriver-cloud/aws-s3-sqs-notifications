@@ -1,0 +1,40 @@
+schema: draft-07
+name: "aws-s3-sqs-notifications"
+description: "SQS Queue for S3 bucket notifications"
+source_url: github.com/massdriver-cloud/aws-s3-sqs-notifications
+access: private
+type: "infrastructure"
+
+params:
+  examples:
+    - __name: US East
+      region: us-east-1
+    - __name: US West
+      region: us-west-2
+  required:
+    - region
+  properties:
+    region:
+      $ref: https://raw.githubusercontent.com/massdriver-cloud/artifact-definitions/main/definitions/types/aws-region.json
+      $md.immutable: true
+
+connections:
+  required:
+    - aws_authentication
+    - bucket
+  properties:
+    aws_authentication:
+      $ref: massdriver/aws-iam-role
+    bucket:
+      $ref: massdriver/aws-s3-bucket
+
+artifacts:
+  required:
+    - queue
+  properties:
+    queue:
+      $ref: massdriver/aws-sqs-queue
+
+ui:
+  ui:order:
+    - "*"
