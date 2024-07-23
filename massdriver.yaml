@@ -13,10 +13,25 @@ params:
       region: us-west-2
   required:
     - region
+    - queue
   properties:
     region:
       $ref: https://raw.githubusercontent.com/massdriver-cloud/artifact-definitions/main/definitions/types/aws-region.json
       $md.immutable: true
+    queue:
+      type: object
+      title: Queue
+      required: []
+      properties:
+        additional_access:
+          type: array
+          title: Additional Account Access
+          description: "Allow additional accounts to read from this queue"
+          default: []
+          items:
+            type: string
+            pattern: ^\d{12}$
+            message: "Entry must be a valid AWS Organization ID"
 
 connections:
   required:
