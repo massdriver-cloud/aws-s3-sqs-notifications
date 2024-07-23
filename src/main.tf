@@ -5,7 +5,7 @@ resource "aws_sqs_queue" "main" {
 resource "aws_s3_bucket_notification" "main" {
   bucket = element(
     reverse(
-      split("/", var.bucket.data.infrastructure.arn)
+      split(":", var.bucket.data.infrastructure.arn)
     ),
   1)
 
