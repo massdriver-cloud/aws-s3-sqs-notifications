@@ -6,18 +6,10 @@ access: private
 type: "infrastructure"
 
 params:
-  examples:
-    - __name: US East
-      region: us-east-1
-    - __name: US West
-      region: us-west-2
+  examples: []
   required:
-    - region
     - queue
   properties:
-    region:
-      $ref: https://raw.githubusercontent.com/massdriver-cloud/artifact-definitions/main/definitions/types/aws-region.json
-      $md.immutable: true
     queue:
       type: object
       title: Queue

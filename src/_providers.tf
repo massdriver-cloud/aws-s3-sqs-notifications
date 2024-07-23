@@ -14,7 +14,7 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region
+  region = var.bucket.specs.aws.region
 
   assume_role {
     role_arn    = var.aws_authentication.data.arn

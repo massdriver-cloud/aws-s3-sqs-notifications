@@ -18,7 +18,7 @@ resource "massdriver_artifact" "queue" {
       }
       specs = {
         aws = {
-          region = var.region
+          region = var.bucket.specs.aws.region
         }
       }
     }
