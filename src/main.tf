@@ -3,7 +3,11 @@ resource "aws_sqs_queue" "main" {
 }
 
 resource "aws_s3_bucket_notification" "main" {
-  bucket = element(split("/", var.bucket.data.infrastructure.arn), 1)
+  bucket = element(
+    reverse(
+      split("/", var.bucket.data.infrastructure.arn)
+    ),
+  1)
 
   queue {
     queue_arn = aws_sqs_queue.main.arn
