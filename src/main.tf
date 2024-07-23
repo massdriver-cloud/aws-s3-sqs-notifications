@@ -7,7 +7,7 @@ resource "aws_s3_bucket_notification" "main" {
     reverse(
       split(":", var.bucket.data.infrastructure.arn)
     ),
-  1)
+  0)
 
   queue {
     queue_arn = aws_sqs_queue.main.arn
