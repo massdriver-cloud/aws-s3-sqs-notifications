@@ -9,7 +9,9 @@
 [![Issues][issues_shield]][issues_url]
 [![MIT License][license_shield]][license_url]
 
+
 SQS Queue for S3 bucket notifications
+
 
 ---
 
@@ -27,21 +29,6 @@ Bundles are the basic building blocks of infrastructure, applications, and archi
 
 ## Bundle
 
-<!-- COMPLIANCE:START -->
-
-Security and compliance scanning of our bundles is performed using [Bridgecrew](https://www.bridgecrew.cloud/). Massdriver also offers security and compliance scanning of operational infrastructure configured and deployed using the platform.
-
-| Benchmark                                                                                                                                                                                                                                                       | Description                        |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| [![Infrastructure Security](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/aws-s3-sqs-notifications/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=&benchmark=INFRASTRUCTURE+SECURITY) | Infrastructure Security Compliance |
-| [![PCI-DSS](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/aws-s3-sqs-notifications/pci>)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=&benchmark=PCI-DSS+V3.2) | Payment Card Industry Data Security Standards Compliance |
-| [![NIST-800-53](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/aws-s3-sqs-notifications/nist>)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=&benchmark=NIST-800-53) | National Institute of Standards and Technology Compliance |
-| [![ISO27001](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/aws-s3-sqs-notifications/iso>)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=&benchmark=ISO27001) | Information Security Management System, ISO/IEC 27001 Compliance |
-| [![SOC2](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/aws-s3-sqs-notifications/soc2>)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=&benchmark=SOC2)| Service Organization Control 2 Compliance |
-| [![HIPAA](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/aws-s3-sqs-notifications/hipaa>)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=&benchmark=HIPAA) | Health Insurance Portability and Accountability Compliance |
-
-<!-- COMPLIANCE:END -->
-
 ### Params
 
 Form input parameters for configuring a bundle for deployment.
@@ -50,12 +37,8 @@ Form input parameters for configuring a bundle for deployment.
 <summary>View</summary>
 
 <!-- PARAMS:START -->
-## Properties
 
-- **`queue`** *(object)*
-  - **`additional_access`** *(array)*: Allow additional accounts to read from this queue. Default: `[]`.
-    - **Items** *(string)*
-## Examples
+**Params coming soon**
 
 <!-- PARAMS:END -->
 
@@ -69,94 +52,8 @@ Connections from other bundles that this bundle depends on.
 <summary>View</summary>
 
 <!-- CONNECTIONS:START -->
-## Properties
 
-- **`aws_authentication`** *(object)*: . Cannot contain additional properties.
-  - **`data`** *(object)*
-    - **`arn`** *(string)*: Amazon Resource Name.
-
-      Examples:
-      ```json
-      "arn:aws:rds::ACCOUNT_NUMBER:db/prod"
-      ```
-
-      ```json
-      "arn:aws:ec2::ACCOUNT_NUMBER:vpc/vpc-foo"
-      ```
-
-    - **`external_id`** *(string)*: An external ID is a piece of data that can be passed to the AssumeRole API of the Security Token Service (STS). You can then use the external ID in the condition element in a role's trust policy, allowing the role to be assumed only when a certain value is present in the external ID.
-  - **`specs`** *(object)*
-    - **`aws`** *(object)*: .
-      - **`region`** *(string)*: AWS Region to provision in.
-
-        Examples:
-        ```json
-        "us-west-2"
-        ```
-
-- **`bucket`** *(object)*: Cannot contain additional properties.
-  - **`data`** *(object)*
-    - **`infrastructure`** *(object)*
-      - **`arn`** *(string)*: Amazon Resource Name.
-
-        Examples:
-        ```json
-        "arn:aws:rds::ACCOUNT_NUMBER:db/prod"
-        ```
-
-        ```json
-        "arn:aws:ec2::ACCOUNT_NUMBER:vpc/vpc-foo"
-        ```
-
-    - **`security`** *(object)*: Informs downstream services of network and/or IAM policies. Cannot contain additional properties.
-      - **`iam`** *(object)*: IAM Policies. Cannot contain additional properties.
-        - **`^[a-z]+[a-z_]*[a-z]+$`** *(object)*
-          - **`policy_arn`** *(string)*: AWS IAM policy ARN.
-
-            Examples:
-            ```json
-            "arn:aws:rds::ACCOUNT_NUMBER:db/prod"
-            ```
-
-            ```json
-            "arn:aws:ec2::ACCOUNT_NUMBER:vpc/vpc-foo"
-            ```
-
-      - **`identity`** *(object)*: For instances where IAM policies must be attached to a role attached to an AWS resource, for instance AWS Eventbridge to Firehose, this attribute should be used to allow the downstream to attach it's policies (Firehose) directly to the IAM role created by the upstream (Eventbridge). It is important to remember that connections in massdriver are one way, this scheme perserves the dependency relationship while allowing bundles to control the lifecycles of resources under it's management. Cannot contain additional properties.
-        - **`role_arn`** *(string)*: ARN for this resources IAM Role.
-
-          Examples:
-          ```json
-          "arn:aws:rds::ACCOUNT_NUMBER:db/prod"
-          ```
-
-          ```json
-          "arn:aws:ec2::ACCOUNT_NUMBER:vpc/vpc-foo"
-          ```
-
-      - **`network`** *(object)*: AWS security group rules to inform downstream services of ports to open for communication. Cannot contain additional properties.
-        - **`^[a-z-]+$`** *(object)*
-          - **`arn`** *(string)*: Amazon Resource Name.
-
-            Examples:
-            ```json
-            "arn:aws:rds::ACCOUNT_NUMBER:db/prod"
-            ```
-
-            ```json
-            "arn:aws:ec2::ACCOUNT_NUMBER:vpc/vpc-foo"
-            ```
-
-          - **`port`** *(integer)*: Port number. Minimum: `0`. Maximum: `65535`.
-          - **`protocol`** *(string)*: Must be one of: `['tcp', 'udp']`.
-  - **`specs`** *(object)*
-    - **`aws`** *(object)*: .
-      - **`region`** *(string)*: AWS Region to provision in.
-
-        Examples:
-        ```json
-        "us-west-2"
-        ```
+**Connections coming soon**
 
 <!-- CONNECTIONS:END -->
 
@@ -170,71 +67,8 @@ Resources created by this bundle that can be connected to other bundles.
 <summary>View</summary>
 
 <!-- ARTIFACTS:START -->
-## Properties
 
-- **`queue`** *(object)*: Cannot contain additional properties.
-  - **`data`** *(object)*
-    - **`infrastructure`** *(object)*
-      - **`arn`** *(string)*: Amazon Resource Name.
-
-        Examples:
-        ```json
-        "arn:aws:rds::ACCOUNT_NUMBER:db/prod"
-        ```
-
-        ```json
-        "arn:aws:ec2::ACCOUNT_NUMBER:vpc/vpc-foo"
-        ```
-
-    - **`security`** *(object)*: Informs downstream services of network and/or IAM policies. Cannot contain additional properties.
-      - **`iam`** *(object)*: IAM Policies. Cannot contain additional properties.
-        - **`^[a-z]+[a-z_]*[a-z]+$`** *(object)*
-          - **`policy_arn`** *(string)*: AWS IAM policy ARN.
-
-            Examples:
-            ```json
-            "arn:aws:rds::ACCOUNT_NUMBER:db/prod"
-            ```
-
-            ```json
-            "arn:aws:ec2::ACCOUNT_NUMBER:vpc/vpc-foo"
-            ```
-
-      - **`identity`** *(object)*: For instances where IAM policies must be attached to a role attached to an AWS resource, for instance AWS Eventbridge to Firehose, this attribute should be used to allow the downstream to attach it's policies (Firehose) directly to the IAM role created by the upstream (Eventbridge). It is important to remember that connections in massdriver are one way, this scheme perserves the dependency relationship while allowing bundles to control the lifecycles of resources under it's management. Cannot contain additional properties.
-        - **`role_arn`** *(string)*: ARN for this resources IAM Role.
-
-          Examples:
-          ```json
-          "arn:aws:rds::ACCOUNT_NUMBER:db/prod"
-          ```
-
-          ```json
-          "arn:aws:ec2::ACCOUNT_NUMBER:vpc/vpc-foo"
-          ```
-
-      - **`network`** *(object)*: AWS security group rules to inform downstream services of ports to open for communication. Cannot contain additional properties.
-        - **`^[a-z-]+$`** *(object)*
-          - **`arn`** *(string)*: Amazon Resource Name.
-
-            Examples:
-            ```json
-            "arn:aws:rds::ACCOUNT_NUMBER:db/prod"
-            ```
-
-            ```json
-            "arn:aws:ec2::ACCOUNT_NUMBER:vpc/vpc-foo"
-            ```
-
-          - **`port`** *(integer)*: Port number. Minimum: `0`. Maximum: `65535`.
-          - **`protocol`** *(string)*: Must be one of: `['tcp', 'udp']`.
-  - **`specs`** *(object)*
-    - **`aws`** *(object)*: .
-      - **`region`** *(string)*: AWS Region to provision in.
-
-        Examples:
-        ```json
-        "us-west-2"
-        ```
+**Artifacts coming soon**
 
 <!-- ARTIFACTS:END -->
 
@@ -246,7 +80,7 @@ Resources created by this bundle that can be connected to other bundles.
 
 ### Bug Reports & Feature Requests
 
-Did we miss something? Please [submit an issue](https://github.com/massdriver-cloud/aws-s3-sqs-notifications/issues>) to report any bugs or request additional features.
+Did we miss something? Please [submit an issue](https://github.com/massdriver-cloud/aws-s3-sqs-notifications/issues) to report any bugs or request additional features.
 
 ### Developing
 
@@ -275,28 +109,30 @@ Please connect with us!
 [![YouTube][youtube_shield]][youtube_url]
 [![Reddit][reddit_shield]][reddit_url]
 
-
 <!-- markdownlint-disable -->
 
 [logo]: https://raw.githubusercontent.com/massdriver-cloud/docs/main/static/img/logo-with-logotype-horizontal-400x110.svg
+[docs]: https://docs.massdriver.cloud/?utm_source=github&utm_medium=readme&utm_campaign=aws-s3-sqs-notifications&utm_content=docs
+[website]: https://www.massdriver.cloud/?utm_source=github&utm_medium=readme&utm_campaign=aws-s3-sqs-notifications&utm_content=website
+[github]: https://github.com/massdriver-cloud?utm_source=github&utm_medium=readme&utm_campaign=aws-s3-sqs-notifications&utm_content=github
+[slack]: https://massdriverworkspace.slack.com/?utm_source=github&utm_medium=readme&utm_campaign=aws-s3-sqs-notifications&utm_content=slack
+[linkedin]: https://www.linkedin.com/company/massdriver/?utm_source=github&utm_medium=readme&utm_campaign=aws-s3-sqs-notifications&utm_content=linkedin
 
-[docs]: https://docs.massdriver.cloud?utm_source=aws-s3-sqs-notifications&utm_medium=aws-s3-sqs-notifications&utm_campaign=aws-s3-sqs-notifications&utm_content=aws-s3-sqs-notifications
-[website]: https://www.massdriver.cloud?utm_source=aws-s3-sqs-notifications&utm_medium=aws-s3-sqs-notifications&utm_campaign=aws-s3-sqs-notifications&utm_content=aws-s3-sqs-notifications
-[github]: https://github.com/massdriver-cloud
-[linkedin]: https://www.linkedin.com/company/massdriver/
 
-[contributors_shield]: https://img.shields.io/github/contributors/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge>
-[contributors_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/graphs/contributors>
-[forks_shield]: https://img.shields.io/github/forks/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge>
-[forks_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/network/members>
-[stars_shield]: https://img.shields.io/github/stars/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge>
-[stars_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/stargazers>
-[issues_shield]: https://img.shields.io/github/issues/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge>
-[issues_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/issues>
-[release_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/releases/latest>
-[release_shield]: https://img.shields.io/github/release/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge>
-[license_shield]: https://img.shields.io/github/license/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge>
-[license_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/blob/main/LICENSE>
+
+[contributors_shield]: https://img.shields.io/github/contributors/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge
+[contributors_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/graphs/contributors
+[forks_shield]: https://img.shields.io/github/forks/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge
+[forks_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/network/members
+[stars_shield]: https://img.shields.io/github/stars/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge
+[stars_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/stargazers
+[issues_shield]: https://img.shields.io/github/issues/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge
+[issues_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/issues
+[release_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/releases/latest
+[release_shield]: https://img.shields.io/github/release/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge
+[license_shield]: https://img.shields.io/github/license/massdriver-cloud/aws-s3-sqs-notifications.svg?style=for-the-badge
+[license_url]: https://github.com/massdriver-cloud/aws-s3-sqs-notifications/blob/main/LICENSE
+
 
 [email_url]: mailto:support@massdriver.cloud
 [email_shield]: https://img.shields.io/badge/email-Massdriver-black.svg?style=for-the-badge&logo=mail.ru&color=000000
@@ -304,8 +140,10 @@ Please connect with us!
 [github_shield]: https://img.shields.io/badge/follow-Github-black.svg?style=for-the-badge&logo=github&color=181717
 [linkedin_url]: https://linkedin.com/in/massdriver-cloud
 [linkedin_shield]: https://img.shields.io/badge/follow-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&color=0A66C2
-[twitter_url]: https://twitter.com/massdriver
+[twitter_url]: https://twitter.com/massdriver?utm_source=github&utm_medium=readme&utm_campaign=aws-s3-sqs-notifications&utm_content=twitter
 [twitter_shield]: https://img.shields.io/badge/follow-Twitter-black.svg?style=for-the-badge&logo=twitter&color=1DA1F2
+[discourse_url]: https://community.massdriver.cloud?utm_source=github&utm_medium=readme&utm_campaign=aws-s3-sqs-notifications&utm_content=discourse
+[discourse_shield]: https://img.shields.io/badge/join-Discourse-black.svg?style=for-the-badge&logo=discourse&color=000000
 [youtube_url]: https://www.youtube.com/channel/UCfj8P7MJcdlem2DJpvymtaQ
 [youtube_shield]: https://img.shields.io/badge/subscribe-Youtube-black.svg?style=for-the-badge&logo=youtube&color=FF0000
 [reddit_url]: https://www.reddit.com/r/massdriver
