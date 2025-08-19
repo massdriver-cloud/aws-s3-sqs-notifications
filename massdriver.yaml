@@ -1,14 +1,13 @@
 schema: draft-07
-name: "aws-s3-sqs-notifications"
-description: "SQS Queue for S3 bucket notifications"
-source_url: github.com/massdriver-cloud/aws-s3-sqs-notifications
-access: private
-type: "infrastructure"
-
+name: aws-s3-sqs-notifications
+version: 1.0.0
+description: SQS Queue for S3 bucket notifications
+source_url: https://github.com/massdriver-cloud/aws-s3-sqs-notifications
+type: application
 params:
   examples: []
   required:
-    - queue
+  - queue
   properties:
     queue:
       type: object
@@ -18,30 +17,33 @@ params:
         additional_access:
           type: array
           title: Additional Account Access
-          description: "Allow additional accounts to read from this queue"
+          description: Allow additional accounts to read from this queue
           default: []
           items:
             type: string
-            pattern: ^\d{12}$
-            message: "Entry must be a valid AWS Organization ID"
-
+            pattern: "^\\d{12}$"
+            message: Entry must be a valid AWS Organization ID
 connections:
   required:
-    - aws_authentication
-    - bucket
+  - aws_authentication
+  - bucket
   properties:
     aws_authentication:
-      $ref: massdriver/aws-iam-role
+      "$ref": massdriver/aws-iam-role
     bucket:
-      $ref: massdriver/aws-s3-bucket
-
+      "$ref": massdriver/aws-s3-bucket
 artifacts:
   required:
-    - queue
+  - queue
   properties:
     queue:
-      $ref: massdriver/aws-sqs-queue
-
+      "$ref": massdriver/aws-sqs-queue
 ui:
   ui:order:
-    - "*"
+  - "*"
+steps:
+- path: src
+  provisioner: opentofu
+  config:
+    checkov:
+      enable: true
