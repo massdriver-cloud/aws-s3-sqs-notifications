@@ -1,7 +1,6 @@
 resource "massdriver_artifact" "queue" {
-  field                = "queue"
-  provider_resource_id = aws_sqs_queue.main.arn
-  name                 = "S3 to SQS event notifications"
+  field    = "queue"
+  name     = "S3 to SQS event notifications"
   artifact = jsonencode(
     {
       data = {
