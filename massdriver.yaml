@@ -28,15 +28,15 @@ connections:
   - bucket
   properties:
     aws_authentication:
-      "$ref": massdriver/aws-iam-role
+      "$ref": aws-iam-role
     bucket:
-      "$ref": massdriver/aws-s3-bucket
+      "$ref": aws-s3-bucket
 artifacts:
   required:
   - queue
   properties:
     queue:
-      "$ref": massdriver/aws-sqs-queue
+      "$ref": aws-sqs-queue
 ui:
   ui:order:
   - "*"
